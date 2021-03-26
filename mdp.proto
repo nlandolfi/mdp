@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package elos.models;
+
+option go_package = "github.com/nlandolfi/mdp";
+
+message Vector {
+    repeated double values = 1;
+}
+
+message Matrix {
+    repeated Vector rows = 1;
+}
+
+message LinearFunction {
+    Vector theta = 1;
+}
+
+message Trace {
+    message Sample {
+        uint64 micros = 1
+        Vector state  = 2;
+        Vector action = 3;
+    }
+
+    repeated Sample = 1;
+}

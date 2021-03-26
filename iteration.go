@@ -2,7 +2,7 @@ package mdp
 
 import "math"
 
-// --- {{{
+// --- Value Iteration {{{
 
 type Values interface {
 	For(s State) float64
@@ -57,7 +57,7 @@ func QValueIteration(p KnownProcess, depth int, qv QValues, discount float64) {
 		}
 	}
 
-	QValueIteration(p, depth, qv, discount)
+	QValueIteration(p, depth-1, qv, discount)
 }
 
 func qValueIterationUpdate(s State, a Action, p KnownProcess, qv QValues, discount float64) float64 {
